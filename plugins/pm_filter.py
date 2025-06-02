@@ -993,20 +993,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 [[
 			InlineKeyboardButton('‼️ ᴅɪꜱᴄʟᴀɪᴍᴇʀ ‼️', callback_data='disclaimer')
 		],[
-			InlineKeyboardButton('Sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', callback_data='Source')
+			InlineKeyboardButton('ꜱᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', callback_data='Source')
                 ],[
-                        InlineKeyboardButton('Mʏ Dᴇᴠᴇʟᴏᴘᴇʀs 😎',callback_data='mydevelopers')
+                        InlineKeyboardButton('ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀꜱ 😎',callback_data='mydevelopers')
 		],[
 			InlineKeyboardButton('⋞ ʜᴏᴍᴇ', callback_data='start')]]
                 ),
             disable_web_page_preview = True
 	)
     elif query.data == "mydevelopers":
-        await query.answer("Meet the minds behind this bot:\n\n👨‍💻 @pArAd0X6\n👨‍💻 @mrnoodles69\n👨‍💻 @tigu69\n\n ᴀ ʙɪɢ ᴛʜᴀɴᴋs ᴛᴏ ʏᴏᴜ ɢᴜʏs ғᴏʀ ᴍᴀᴋɪɴɢ ᴛʜɪs ᴀᴡᴇsᴏᴍᴇ ʙᴏᴛ", show_alert=True)
+        await query.answer("ᴍᴇᴇᴛ ᴛʜᴇ ᴍɪɴᴅꜱ ʙᴇʜɪɴᴅ ᴛʜɪꜱ ʙᴏᴛ:\n\n👨‍💻 @pArAd0X6\n👨‍💻 @mrnoodles69\n👨‍💻 @tigu69\n\n ᴀ ʙɪɢ ᴛʜᴀɴᴋs ᴛᴏ ʏᴏᴜ ɢᴜʏs ғᴏʀ ᴍᴀᴋɪɴɢ ᴛʜɪs ᴀᴡᴇsᴏᴍᴇ ʙᴏᴛ", show_alert=True)
  
     elif query.data == "Source":
         buttons = [[
-            InlineKeyboardButton('Repo', url='https://github.com/mrromeo99/Jisshu-filter-bot.git')
+            InlineKeyboardButton('ʀᴇᴘᴏ', url='https://github.com/mrromeo99/Jisshu-filter-bot.git')
         ],[
             InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='about'),
             InlineKeyboardButton('• ᴄʟᴏsᴇ •', callback_data='close_data')
@@ -1048,10 +1048,28 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ),
         reply_markup=reply_markup
     )
-   
+
+    elif query.data == "more":
+        buttons = [[
+            InlineKeyboardButton('ᴛᴇʟᴇɢʀᴀᴘʜ', callback_data='telegraph'),
+            InlineKeyboardButton('ᴛᴏʀʀᴇɴᴛ', callback_data='torrent')
+         ], [
+	    InlineKeyboardButton('ғᴏɴᴛ', callback_data='font'), 
+            InlineKeyboardButton('sᴛʀᴇᴀᴍ', callback_data='streams')
+	 ], [
+            InlineKeyboardButton('◁', callback_data='features'),
+            InlineKeyboardButton('• ʜᴏᴍᴇ •', callback_data='start') 
+	]]
+	reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.HELP_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+	)
+
     elif query.data == "telegraph":
         buttons = [[
-            InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='features')
+            InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='more')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)  
         await query.message.edit_text(
@@ -1061,7 +1079,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "font":
         buttons = [[
-            InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='features')
+            InlineKeyboardButton('⋞ ʙᴀᴄᴋ', callback_data='more')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons) 
         await query.message.edit_text(
